@@ -45,16 +45,16 @@ def main(in_file, out_file):
 		if not t:
 			break
 
-		out_file.write(get_token_str(t) + '\n')
+		token_str = get_token_str(t)
+		out_file.write(token_str + '\n')
+		print(token_str)
 
 if __name__ == '__main__':
-	if len(sys.argv) != 2:
-		print 'Invalid number of arguments.'
-		sys.exit(0)
-
 	filename = sys.argv[1]
 	in_file = open(filename, 'r')
-	out_file = open(filename + '.mytkn.txt', 'w')
+
+	filename_prefix = filename[:filename.index('.')]
+	out_file = open(filename_prefix + '.tkn', 'w')
 	
 	main(in_file, out_file)
 
