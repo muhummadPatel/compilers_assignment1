@@ -12,8 +12,8 @@ t_AMPERSAND = r'\&'
 t_EQUALS = r'\='
 t_LEFT_PARENTHESIS = r'\('
 t_RIGHT_PARENTHESIS = r'\)'
-t_WHITESPACE = r'\s+'
-t_COMMENT = r'(/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/)|(//.*)'   #r'(/\*(.|\s)*\*/)|(//.*)'
+t_ignore_WHITESPACE = r'\s+'
+t_ignore_COMMENT = r'(/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/)|(//.*)'   #r'(/\*(.|\s)*\*/)|(//.*)'
 
 symbols = ['AT', 'DOLLAR', 'HASH', 'AMPERSAND', 'EQUALS', 'LEFT_PARENTHESIS', 'RIGHT_PARENTHESIS']
 non_code = ['WHITESPACE', 'COMMENT']
@@ -35,9 +35,11 @@ def get_token_str(token):
 
 	return token_str
 
-def main(in_file, out_file):
-	lex.lex()
 
+
+lex.lex()
+
+def main(in_file, out_file):
 	in_data = in_file.read()
 	lex.input(in_data)
 	while True:
