@@ -2,6 +2,8 @@ import ply.lex as lex
 import sys
 
 tokens = ['ID', 'FLOAT_LITERAL', 'AT', 'DOLLAR', 'HASH', 'AMPERSAND', 'EQUALS', 'LEFT_PARENTHESIS', 'RIGHT_PARENTHESIS', 'WHITESPACE', 'COMMENT']
+symbols = ['AT', 'DOLLAR', 'HASH', 'AMPERSAND', 'EQUALS', 'LEFT_PARENTHESIS', 'RIGHT_PARENTHESIS']
+non_code = ['COMMENT', 'WHITESPACE']
 
 t_ID = r'[a-zA-Z_][a-zA-Z0-9]*'
 t_FLOAT_LITERAL = r'[+-]?[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)?'
@@ -12,16 +14,27 @@ t_AMPERSAND = r'\&'
 t_EQUALS = r'\='
 t_LEFT_PARENTHESIS = r'\('
 t_RIGHT_PARENTHESIS = r'\)'
-t_ignore_WHITESPACE = r'\s+'
-t_ignore_COMMENT = r'(/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/)|(//.*)'   #r'(/\*(.|\s)*\*/)|(//.*)'
 
-symbols = ['AT', 'DOLLAR', 'HASH', 'AMPERSAND', 'EQUALS', 'LEFT_PARENTHESIS', 'RIGHT_PARENTHESIS']
-non_code = ['WHITESPACE', 'COMMENT']
+def t_COMMENT(t):
+    r'(/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/)|(//.*)'
+
+    if __name__ == '__main__':
+    	return t
+    else:
+    	pass
+
+def t_WHITESPACE(t):
+    r'\s+'
+
+    if __name__ == '__main__':
+    	return t
+    else:
+    	pass
 
 # Error handling rule
 def t_error(t):
     print('Illegal character: %s' % t.value[0])
-    t.lexer.skip(1)
+    t.lexer.skip(1)    
 
 def get_token_str(token):
 	token_str = 'defaultTokenString'
