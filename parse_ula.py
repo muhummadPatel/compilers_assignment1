@@ -1,3 +1,10 @@
+# Parser for ula files (unconventional language)
+# Prints the output of the parser to stdout and an output file
+# when run as a standalone python script.
+#
+# Muhummad Patel(PTLMUH006)
+# 11-September-2015
+
 import ply.yacc as yacc
 import lex_ula
 import sys

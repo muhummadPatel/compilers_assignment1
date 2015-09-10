@@ -1,3 +1,10 @@
+# Lexical analyser for ula files (unconventional language)
+# Prints the output of the lexer to stdout and an output file
+# when run as a standalone python script.
+#
+# Muhummad Patel(PTLMUH006)
+# 11-September-2015
+
 import ply.lex as lex
 import sys
 
@@ -63,6 +70,7 @@ def main(in_file, out_file):
 		token_str = get_token_str(t)
 		out_file.write(token_str + '\n')
 		print(token_str)
+
 
 if __name__ == '__main__':
 	filename = sys.argv[1]
